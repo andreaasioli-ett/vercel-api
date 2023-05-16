@@ -2,7 +2,7 @@ import fetch from 'node-fetch';
 import express from 'express';
 import cors from 'cors';
 
-const app = express();
+export const app = express();
 
 const openaiApiKey = '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';
 const temperature = 0.5;
