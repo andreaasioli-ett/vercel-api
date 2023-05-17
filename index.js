@@ -1,10 +1,11 @@
-import fetch from 'node-fetch';
-import express from 'express';
-import cors from 'cors';
+const fetch = require('node-fetch-commonjs');
+const express = require('express');
+const cors = require('cors');
 
-export const app = express();
 
-const openaiApiKey = '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';
+const app = express();
+
+const openaiApiKey = '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';
 const temperature = 0.5;
 const url = 'https://api.openai.com/v1/chat/completions';
 const options = {
@@ -42,7 +43,7 @@ app.get("/", async (req, res) => {
   });
 
   const response = await fetch(url, { ...options, body })
- 
+  console.log(response);
   try {
     res.writeHead(200, { 'Content-Type': 'text/plain; charset=utf-8', 'Transfer-Encoding': 'chunked' });
     for await (const chunk of response.body) {
@@ -68,3 +69,4 @@ app.listen(5000, () => {
   console.log("Running on port 5000.");
 });
 
+module.exports = app;
